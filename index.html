@@ -343,19 +343,53 @@
 
         @media (max-width: 768px) {
             .copy-section {
-                top: 20px;
-                right: 20px;
+                position: static;
+                margin: 20px auto 0;
+                flex-direction: row;
+                justify-content: center;
                 gap: 10px;
+                max-width: 100%;
+                padding: 0 20px;
             }
 
             .copy-card {
-                min-width: 220px;
-                padding: 15px 20px;
+                min-width: 0;
+                flex: 1;
+                padding: 15px;
+                max-width: 200px;
+            }
+
+            .copy-ip {
+                font-size: 13px;
+            }
+
+            .copy-port {
+                font-size: 11px;
+            }
+
+            .copy-btn-inline {
+                padding: 6px 12px;
+                font-size: 9px;
+            }
+
+            .logo-container {
+                margin-top: 40px;
+                margin-bottom: 20px;
             }
 
             .logo {
-                width: 350px;
-                height: 350px;
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero {
+                padding: 0 15px;
+            }
+
+            .discord-link {
+                padding: 14px 40px;
+                font-size: 11px;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -374,21 +408,6 @@
         <div class="ball"></div>
     </div>
 
-    <div class="copy-section">
-        <div class="copy-card">
-            <div class="copy-platform">Java</div>
-            <div class="copy-ip">auxysmp.eu</div>
-            <button class="copy-btn-inline" onclick="copyIP('auxysmp.eu', this)">COPY IP</button>
-        </div>
-
-        <div class="copy-card">
-            <div class="copy-platform">Bedrock</div>
-            <div class="copy-ip">bedrock.auxysmp.eu</div>
-            <div class="copy-port">Port: 26219</div>
-            <button class="copy-btn-inline" onclick="copyIP('bedrock.auxysmp.eu', this)">COPY IP</button>
-        </div>
-    </div>
-
     <div class="hero">
         <div class="logo-container">
             <div class="logo">
@@ -397,6 +416,21 @@
         </div>
 
         <a href="https://discord.auxysmp.eu" class="discord-link" target="_blank">DISCORD</a>
+
+        <div class="copy-section">
+            <div class="copy-card">
+                <div class="copy-platform">Java</div>
+                <div class="copy-ip">auxysmp.eu</div>
+                <button class="copy-btn-inline" onclick="copyIP('auxysmp.eu', this)">COPY IP</button>
+            </div>
+
+            <div class="copy-card">
+                <div class="copy-platform">Bedrock</div>
+                <div class="copy-ip">bedrock.auxysmp.eu</div>
+                <div class="copy-port">Port: 26219</div>
+                <button class="copy-btn-inline" onclick="copyIP('bedrock.auxysmp.eu', this)">COPY IP</button>
+            </div>
+        </div>
 
         <p class="tagline">anarchy. community. chaos.</p>
     </div>
