@@ -492,15 +492,47 @@
 
     <script>
         function copyIP(ip, button) {
-            navigator.clipboard.writeText(ip).then(() => {
+            // Try modern clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(ip).then(() => {
+                    const originalText = button.innerText;
+                    button.innerText = '✓ COPIED';
+                    setTimeout(() => {
+                        button.innerText = originalText;
+                    }, 1500);
+                }).catch(err => {
+                    fallbackCopy(ip, button);
+                });
+            } else {
+                // Fallback for HTTP or older browsers
+                fallbackCopy(ip, button);
+            }
+        }
+
+        function fallbackCopy(text, button) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
                 const originalText = button.innerText;
                 button.innerText = '✓ COPIED';
                 setTimeout(() => {
                     button.innerText = originalText;
                 }, 1500);
-            }).catch(err => {
+            } catch (err) {
                 console.error('Failed to copy:', err);
-            });
+                button.innerText = '✗ FAILED';
+                setTimeout(() => {
+                    button.innerText = 'COPY IP';
+                }, 1500);
+            }
+            textArea.remove();
         }
     </script>
 </body>
