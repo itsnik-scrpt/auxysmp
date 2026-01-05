@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuxySMP</title>
+    <meta name="description" content="AuxySMP - Where chaos meets community">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Blurry Background Image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('2026-01-05_20.16.32.png') center/cover no-repeat;
+            filter: blur(8px);
+            opacity: 0.5;
+            z-index: -2;
+        }
+
+        /* Dark overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        /* Animated Background Balls */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.2) 60%, transparent 100%);
+            box-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(255, 255, 255, 0.4);
+        }
+
+        .ball:nth-child(1) {
+            width: 8px;
+            height: 8px;
+            animation: floatRandom1 18s infinite ease-in-out;
+        }
+
+        .ball:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            animation: floatRandom2 20s infinite ease-in-out;
+        }
+
+        .ball:nth-child(3) {
+            width: 7px;
+            height: 7px;
+            animation: floatRandom3 16s infinite ease-in-out;
+        }
+
+        .ball:nth-child(4) {
+            width: 9px;
+            height: 9px;
+            animation: floatRandom4 19s infinite ease-in-out;
+        }
+
+        .ball:nth-child(5) {
+            width: 11px;
+            height: 11px;
+            animation: floatRandom5 22s infinite ease-in-out;
+        }
+
+        .ball:nth-child(6) {
+            width: 8px;
+            height: 8px;
+            animation: floatRandom6 19s infinite ease-in-out;
+        }
+
+        .ball:nth-child(7) {
+            width: 10px;
+            height: 10px;
+            animation: floatRandom7 21s infinite ease-in-out;
+        }
+
+        .ball:nth-child(8) {
+            width: 9px;
+            height: 9px;
+            animation: floatRandom8 18s infinite ease-in-out;
+        }
+
+        .ball:nth-child(9) {
+            width: 7px;
+            height: 7px;
+            animation: floatRandom9 20s infinite ease-in-out;
+        }
+
+        .ball:nth-child(10) {
+            width: 8px;
+            height: 8px;
+            animation: floatRandom10 17s infinite ease-in-out;
+        }
+
+        @keyframes floatRandom1 {
+            0% { top: 12%; left: 8%; opacity: 0; }
+            10%, 90% { opacity: 0.8; }
+            50% { top: 25%; left: 15%; }
+            100% { top: 18%; left: 5%; opacity: 0; }
+        }
+
+        @keyframes floatRandom2 {
+            0% { top: 68%; left: 85%; opacity: 0; }
+            10%, 90% { opacity: 0.7; }
+            50% { top: 75%; left: 78%; }
+            100% { top: 72%; left: 88%; opacity: 0; }
+        }
+
+        @keyframes floatRandom3 {
+            0% { top: 35%; left: 62%; opacity: 0; }
+            10%, 90% { opacity: 0.9; }
+            50% { top: 45%; left: 68%; }
+            100% { top: 38%; left: 58%; opacity: 0; }
+        }
+
+        @keyframes floatRandom4 {
+            0% { top: 82%; left: 22%; opacity: 0; }
+            10%, 90% { opacity: 0.75; }
+            50% { top: 88%; left: 28%; }
+            100% { top: 80%; left: 18%; opacity: 0; }
+        }
+
+        @keyframes floatRandom5 {
+            0% { top: 15%; left: 92%; opacity: 0; }
+            10%, 90% { opacity: 0.85; }
+            50% { top: 22%; left: 88%; }
+            100% { top: 18%; left: 95%; opacity: 0; }
+        }
+
+        @keyframes floatRandom6 {
+            0% { top: 52%; left: 38%; opacity: 0; }
+            10%, 90% { opacity: 0.8; }
+            50% { top: 58%; left: 45%; }
+            100% { top: 55%; left: 35%; opacity: 0; }
+        }
+
+        @keyframes floatRandom7 {
+            0% { top: 28%; left: 3%; opacity: 0; }
+            10%, 90% { opacity: 0.7; }
+            50% { top: 35%; left: 8%; }
+            100% { top: 32%; left: 2%; opacity: 0; }
+        }
+
+        @keyframes floatRandom8 {
+            0% { top: 62%; left: 72%; opacity: 0; }
+            10%, 90% { opacity: 0.9; }
+            50% { top: 68%; left: 68%; }
+            100% { top: 65%; left: 75%; opacity: 0; }
+        }
+
+        @keyframes floatRandom9 {
+            0% { top: 42%; left: 48%; opacity: 0; }
+            10%, 90% { opacity: 0.75; }
+            50% { top: 48%; left: 55%; }
+            100% { top: 45%; left: 45%; opacity: 0; }
+        }
+
+        @keyframes floatRandom10 {
+            0% { top: 88%; left: 12%; opacity: 0; }
+            10%, 90% { opacity: 0.8; }
+            50% { top: 92%; left: 8%; }
+            100% { top: 85%; left: 15%; opacity: 0; }
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            margin-top: 60px;
+        }
+
+        .logo {
+            width: 600px;
+            height: 600px;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .discord-link {
+            display: inline-block;
+            padding: 18px 50px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .discord-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .tagline {
+            display: none;
+        }
+
+        .info-grid {
+            display: none;
+        }
+
+        footer {
+            display: none;
+        }
+
+        .copy-section {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .copy-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px 25px;
+            min-width: 280px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .copy-platform {
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .copy-ip {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .copy-port {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+
+        .copy-btn-inline {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .copy-btn-inline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .ip-section {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .copy-section {
+                top: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+
+            .copy-card {
+                min-width: 220px;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+    </div>
+
+    <div class="copy-section">
+        <div class="copy-card">
+            <div class="copy-platform">Java</div>
+            <div class="copy-ip">auxysmp.eu</div>
+            <button class="copy-btn-inline" onclick="copyIP('auxysmp.eu', this)">COPY IP</button>
+        </div>
+
+        <div class="copy-card">
+            <div class="copy-platform">Bedrock</div>
+            <div class="copy-ip">bedrock.auxysmp.eu</div>
+            <div class="copy-port">Port: 26219</div>
+            <button class="copy-btn-inline" onclick="copyIP('bedrock.auxysmp.eu', this)">COPY IP</button>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="logo.png" alt="AuxySMP">
+            </div>
+        </div>
+
+        <a href="https://discord.auxysmp.eu" class="discord-link" target="_blank">DISCORD</a>
+
+        <p class="tagline">anarchy. community. chaos.</p>
+    </div>
+
+    <script>
+        function copyIP(ip, button) {
+            navigator.clipboard.writeText(ip).then(() => {
+                const originalText = button.innerText;
+                button.innerText = '✓ COPIED';
+                setTimeout(() => {
+                    button.innerText = originalText;
+                }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
